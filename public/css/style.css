@@ -1,0 +1,30 @@
+body{
+	width: 100%;
+	/*position: relative*/
+}
+
+.centerbox{
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	margin: auto
+}
+
+.outer{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10%
+}
+
+p.blankbox{
+	background-color: #f8dce0; 
+	margin: 10px; 
+	padding: 10px; 
+	width:100%; 
+	height:200px
+}

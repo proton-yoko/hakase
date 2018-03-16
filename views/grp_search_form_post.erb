@@ -1,0 +1,8 @@
+<%=search_key%>'s grouplist...
+<br>
+<% result.each do |row|%>
+	<a href="/grp_tl?grp_id=<%=row["grp_id"]%>">
+		<%=row["grp_id"]%>
+	</a>
+	<br>
+<%end%>

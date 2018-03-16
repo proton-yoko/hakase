@@ -1,0 +1,9 @@
+<%readlog.each do |row|%>
+	<%= row["usr_id"]%>
+	<br>
+	<a href="<%=row["pp_url"]%>">
+		<%=row["pp_title"]%>
+	</a>
+	<br>
+	<br>
+<%end%>

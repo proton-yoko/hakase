@@ -1,3 +1,44 @@
-hakase
-index page
-<a href='localhost:4567/log_input_form'>here's the read log!</a>
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="proton">
+		<link rel="icon" href="/img/hakase_200_200.jpg">
+		<link rel="stylesheet" href="/css/style.css">
+		<title>Hakase</title>
+	</head>
+
+	<body>
+
+		<div class="outer">
+			<div align="center">
+				<a href="/"><img src="/img/hakase_s.png" width="500"></a>
+
+				<form method="get" action="/log_search_form" enctype="multipart/form-data">
+					<input type="submit" value="search by name">
+				</form>
+				<form method="get" action="/log_input_form" enctype="multipart/form-data">
+					<input type="submit" value="input readlog->">
+				</form>
+				<form method="get" action="/readlog_check" enctype="multipart/form-data">
+					<input type="submit" value="check all readlog->">
+				</form>
+
+				<br>
+				<br>
+
+				<form method="get" action="/grp_search_form" enctype="multipart/form-data">
+					<input type="submit" value="search your group">
+				</form>
+
+				<form method="get" action="/grp_input_form" enctype="multipart/form-data">
+					<input type="submit" value="get into a group->">
+				</form>
+				<form method="get" action="/grp_usr_check" enctype="multipart/form-data">
+					<input type="submit" value="check all grp_usr->">
+				</form>
+
+			</div>
+		</div>
+	</body>
+</html>

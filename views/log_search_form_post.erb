@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="proton">
+		<link rel="icon" href="/img/hakase_200_200.jpg">
+		<link rel="stylesheet" href="/css/style.css">
+		<title>Hakase</title>
+	</head>
+
+	<body>
+
+
+
+
+		<%=search_key%>'s readlog...
+		<br>
+		<% result.each do |row|%>
+			<a href='<%=row["pp_url"]%>'><%=row["pp_title"]%></a>
+			<br>
+		<%end%>
+
+	</body>
+</html>
