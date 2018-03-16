@@ -10,15 +10,17 @@
 
 	<body>
 
+		<div>
+			<a href="/"><img src="/img/hakase_simple.png" height=70></a>
+		</div>
 
-
-
-		<%=search_key%>'s readlog...
-		<br>
-		<% result.each do |row|%>
-			<a href='<%=row["pp_url"]%>'><%=row["pp_title"]%></a>
+		<div>
+			<%=search_key%>'s readlog...
 			<br>
-		<%end%>
-
+			<% result.each do |row|%>
+				<a href='<%=row["pp_url"]%>'><%=row["pp_title"]%></a>
+				<br>
+			<%end%>
+		</div>
 	</body>
 </html>
