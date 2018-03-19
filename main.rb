@@ -2,6 +2,8 @@ require 'sinatra'
 require 'sqlite3'
 require 'securerandom'
 require 'sinatra/reloader'
+require 'mechanize'
+
 db = SQLite3::Database.new 'db/hakase.db'
 db.results_as_hash = true
 
@@ -109,4 +111,31 @@ get '/grp_tl' do
 		readlog: readlog
 	}
 	erb :grp_tl, :locals => locals
+end
+
+get '/smr' do
+	#pp_url = "https://www.nature.com/articles/1811199a0"
+	pp_url = params['pp_url']
+	gs_url = 'https://scholar.google.co.jp/scholar?q='+pp_url
+	#URL = 'https://scholar.google.co.jp/scholar?q=https://www.nature.com/articles/1811199a0'
+
+	agent = Mechanize.new
+	page = agent.get(gs_url)
+
+	elements = page.search(".//div[@class='gs_ri']")
+	#elements = page.search('title')
+	title = page.search(".//h3[@class='gs_rt']")
+	author = page.search(".//div[@class='gs_a']")
+	abstract = page.search(".//div[@class='gs_rs']")
+	#elements.inspect
+	
+	locals = {
+		elements: elements,
+		title: title,
+		author: author,
+		abstract: abstract,
+		gs_url: gs_url
+	}
+
+	erb :smr, :locals => locals
 end

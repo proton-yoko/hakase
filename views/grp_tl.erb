@@ -1,7 +1,11 @@
 <%readlog.each do |row|%>
 	<%= row["usr_id"]%>
 	<br>
-	<a href="<%=row["pp_url"]%>">
+	<!--
+		<a href="<=row["pp_url"]%>">
+	-->
+
+	<a href="/smr?pp_url=<%=row["pp_url"]%>">
 		<%=row["pp_title"]%>
 	</a>
 	<br>
