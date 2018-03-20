@@ -44,8 +44,6 @@ post '/log_input_form_post' do
 	gs_rs = page.search(".//div[@class='gs_rs']").to_s
 	gs_fl = page.search(".//div[@class='gs_fl']").to_s
 	
-	#db.execute('INSERT INTO pp_info(pp_url, gs_rt, gs_a, gs_rs, gs_fl) 
-	
 	stmt = db.prepare('INSERT INTO pp_info(pp_url, gs_rt, gs_a, gs_rs, gs_fl) 
 			   VALUES(?,?,?,?,?)')
 	stmt.bind_params(pp_url, gs_rt, gs_a, gs_rs, gs_fl)
