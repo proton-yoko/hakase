@@ -9,17 +9,45 @@
 	</head>
 
 	<body>
-		
-		<div class="headbox">
-			<a href="/"><img src="/img/hakase_simple.png" height=70></a>
-		</div>
 
-		<div>
-			<%=search_key%>'s readlog...
-			<br>
-			<% result.each do |row|%>
-				<a href='<%=row["pp_url"]%>'><%=row["pp_title"]%></a>
-				<br>
+	<div id="gs_hdr" role="banner">
+	<a href="/"><img src="/img/hakase_simple.png" width="100px"></a>
+	<div id="gs_hdr_md">
+	</div>
+	</div>
+
+	<div>
+
+		<%usr_pic.each do |pic|%>
+		<%if pic["usr_id"]==search_key%>
+				  <img src="/uploads/<%=pic["file_name"]%>" width="150px">
+			  <%end%>
+		  <%end%>
+		  <br>
+		  <div style="font-size: large">
+		  @<%=search_key%>'s readlog page!
+		  </div>
+	<% result.each do |row|%>
+		<!--
+		<a href='<=row["pp_url"]%>'><=row["pp_title"]%></a>
+		-->
+		<br>
+		<%a=0%>
+		<%pp_info.each do |pp|%>
+			<%if a==0%>
+					  <%if pp["pp_url"]==row["pp_url"]%>
+								<%a=1%>
+								<div class="smlbox">
+								<div class="gs_ri">
+								<%=pp["gs_rt"]%>
+								<%=pp["gs_a"]%>
+								<%=pp["gs_rs"]%>
+								<!--<=pp["gs_fl"]%>-->
+								</div>
+								</div>
+							<%end%>
+						<%end%>
+					<%end%>
 			<%end%>
 		</div>
 	</body>

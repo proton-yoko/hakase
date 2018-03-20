@@ -107,6 +107,10 @@ p.blankbox{
 	font-size: 1px;
 }
 
+.gs_ri {
+	    max-width: 712px;
+}
+
 .gs_fl {
 	color: #777777;
 }
@@ -189,4 +193,19 @@ a:visited {
 	display: table-cell;
 	vertical-align: top;
 	padding: 0 24px 0 16px;
+}
+
+
+
+.gs_el_ta #gs_res_ccl, .gs_el_ph #gs_res_ccl {
+	margin: 16px 0 0 0;
+}
+
+#gs_res_ccl {
+	margin: 21px 0 0 0;
+	max-width: 950px;
+}
+
+.smlbox {
+	margin-left: 120px
 }
