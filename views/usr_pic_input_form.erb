@@ -3,25 +3,24 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="author" content="proton">
-		<link rel="icon" href="/img/hakase_200_200pink.jpg">
+		<link rel="icon" href="/img/hakase_200_200.jpg">
 		<link rel="stylesheet" href="/css/style.css">
 		<title>Hakase</title>
 	</head>
 
 	<body>
+
 		<div class="outer">
 			<div align="center">
-				<a href="/"><img src="img/hakase_s.png" width="500"></a>
-				<form method="post" action="grp_search_form_post">
-					<!--
-		 <input type="text" name="usr_id" placeholder="your user id">
-					-->
-					<input class="hfi" type="text" name="usr_id" placeholder="your user id">
-					<input type="submit" value="search">
+				<a href="/"><img src="/img/hakase_s.png" width="500"></a>
+
+				<form method="post" action="usr_pic_input_form_post" enctype="multipart/form-data">
+					<input type="text" name="usr_id" placeholder="your id"><br>
+					<input type="file" name="image"><br>
+					<input type="submit" value="go">
 				</form>
 			</div>
 		</div>
-
 
 
 		<div id="h_ftr">

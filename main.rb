@@ -20,20 +20,37 @@ post '/index_post' do
 end
 
 get '/log_input_form' do
-	readlog = db.execute('SELECT * FROM readlog')
-	locals = {	
-		readlog: readlog
-	}
-	erb :log_input_form, :locals => locals
+	#readlog = db.execute('SELECT * FROM readlog')
+	#locals = {	
+##		readlog: readlog
+#	}
+	erb :log_input_form#, :locals => locals
 end
 
 post '/log_input_form_post' do
 	usr_id = params['usr_id']
 	pp_url = params['pp_url']
-	pp_title = params['pp_title']
+#	pp_title = params['pp_title']
 
-	db.execute('INSERT INTO readlog(usr_id, pp_url, pp_title) VALUES("' + usr_id + '", "' + pp_url + '", "' + pp_title + '")')
+#	db.execute('INSERT INTO readlog(usr_id, pp_url, pp_title) VALUES("' + usr_id + '", "' + pp_url + '", "' + pp_title + '")')
+	db.execute('INSERT INTO readlog2(usr_id, pp_url) VALUES("' + usr_id + '", "' + pp_url + '")')
 
+	#ほんとはここで同じのは弾く処理いれたい
+	gs_url = 'https://scholar.google.co.jp/scholar?q='+pp_url
+	agent = Mechanize.new
+	page = agent.get(gs_url)
+	gs_rt = page.search(".//h3[@class='gs_rt']").to_s
+	gs_a = page.search(".//div[@class='gs_a']").to_s
+	gs_rs = page.search(".//div[@class='gs_rs']").to_s
+	gs_fl = page.search(".//div[@class='gs_fl']").to_s
+	
+	#db.execute('INSERT INTO pp_info(pp_url, gs_rt, gs_a, gs_rs, gs_fl) 
+	
+	stmt = db.prepare('INSERT INTO pp_info(pp_url, gs_rt, gs_a, gs_rs, gs_fl) 
+			   VALUES(?,?,?,?,?)')
+	stmt.bind_params(pp_url, gs_rt, gs_a, gs_rs, gs_fl)
+	stmt.execute
+	
 	redirect '/log_input_form'
 end
 
@@ -102,13 +119,21 @@ get '/grp_tl' do
 	grp_id = params['grp_id']
 	#grp_id = "sikilab"
 	#grp_usr = db.execute('SELECT * FROM grp_usr WHERE grp_id="' + grp_id + '"')
+		
+#	readlog = db.execute('SELECT * FROM readlog WHERE usr_id IN (
+#						 SELECT usr_id FROM grp_usr WHERE grp_id="' + grp_id + '"
+#						)')
 	
-	readlog = db.execute('SELECT * FROM readlog WHERE usr_id IN (
+	readlog2 = db.execute('SELECT * FROM readlog2 WHERE usr_id IN (
 						 SELECT usr_id FROM grp_usr WHERE grp_id="' + grp_id + '"
 						)')
+	pp_info = db.execute('SELECT * FROM pp_info')
+	usr_pic = db.execute('SELECT * FROM usr_pic')
 	locals = {
 		#grp_usr: grp_usr,
-		readlog: readlog
+		readlog: readlog2,
+		pp_info: pp_info,
+		usr_pic: usr_pic
 	}
 	erb :grp_tl, :locals => locals
 end
@@ -139,3 +164,19 @@ get '/smr' do
 
 	erb :smr, :locals => locals
 end
+
+
+get '/usr_pic_input_form' do
+	erb :usr_pic_input_form
+end
+
+post '/usr_pic_input_form_post' do
+	usr_id = params['usr_id']
+	file_name = SecureRandom.hex(16) + '_' + params['image'][:filename]
+	File.write('./public/uploads/' + file_name, params['image'][:tempfile].read)
+	db.execute('INSERT INTO usr_pic(usr_id, file_name) VALUES("' + usr_id + '", "' + file_name + '")')
+#	p params['image']
+	redirect '/usr_pic_input_form'
+end
+
+

@@ -1,13 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="proton">
+<link rel="icon" href="/img/hakase_200_200pink.jpg">
+<link rel="stylesheet" href="/css/style.css">
+<title>Hakase</title>
+</head>
+<body>
+<div id="gs_hdr" role="banner">
+<a href="/"><img src="/img/hakase_simple.png" width="100px"></a>
+<div id="gs_hdr_md">
+
+</div>
+
+</div>
+
+<div id="gs_bdy">
+<div id="gs_bdy_ccl" role="main">
 <%readlog.each do |row|%>
 	<%= row["usr_id"]%>
-	<br>
-	<!--
-		<a href="<=row["pp_url"]%>">
-	-->
-
-	<a href="/smr?pp_url=<%=row["pp_url"]%>">
-		<%=row["pp_title"]%>
-	</a>
-	<br>
-	<br>
-<%end%>
+	<%usr_pic.each do |pic|%>
+		<%if pic["usr_id"]==row["usr_id"]%>
+				  <img src="/uploads/<%=pic["file_name"]%>" width="60px">
+			  <%end%>
+	<%end%>
+	  <br>
+		  <%a=0%>
+		  <%pp_info.each do |pp|%>
+			  <%if a==0%>
+						<%if pp["pp_url"]==row["pp_url"]%>
+								  <%a=1%>
+								  <%=pp["gs_rt"]%>
+								  <%=pp["gs_a"]%>
+								  <%=pp["gs_rs"]%>
+								  <!--<=pp["gs_fl"]%>-->
+							  <%end%>
+						  <%end%>
+					  <%end%>
+		  <br>
+	  <%end%>
+	  </div>
+</div>
+</body>
+</html>
