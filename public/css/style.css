@@ -30,6 +30,8 @@ body{
 	font: 16px arial,sans-serif;
 	line-height: 34px;
 	height: 34px !important;
+    inline-size: 400px;
+	border: solid 2px #ff0073;
 }
 
 
@@ -105,6 +107,10 @@ p.blankbox{
 }
 .gs_ri .gs_fl {
 	font-size: 1px;
+}
+
+.gs_ri {
+	    max-width: 712px;
 }
 
 .gs_fl {
@@ -190,3 +196,58 @@ a:visited {
 	vertical-align: top;
 	padding: 0 24px 0 16px;
 }
+
+
+
+.gs_el_ta #gs_res_ccl, .gs_el_ph #gs_res_ccl {
+	margin: 16px 0 0 0;
+}
+
+#gs_res_ccl {
+	margin: 21px 0 0 0;
+	max-width: 950px;
+}
+
+.smlbox {
+	margin-left: 120px
+}
+.square_btn {
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: #ff0073;
+	border: solid 2px #ff0073;
+	border-radius: 3px;
+	transition: .4s;
+	margin-top: 2px;
+	width: 100px
+}
+
+.square_btn:hover {
+	background: #ff0073;
+	color: white
+}
+
+.submit_btn{
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: #ff0073;
+	border: solid 2px #ff0073;
+	border-radius: 3px;
+	transition: .4s;
+	margin-top: 2px;	
+}
+
+
+.submit_btn:hover {
+	background: #ff0073;
+	color: white
+}
+
+.search_box{
+	inline-size: 400px;
+	border: solid 2px #ff0073;
+}
+
+

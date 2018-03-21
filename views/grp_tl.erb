@@ -18,29 +18,39 @@
 
 <div id="gs_bdy">
 <div id="gs_bdy_ccl" role="main">
+
+<div id="gs_rel_ccl">
+
 <%readlog.each do |row|%>
 	<%= row["usr_id"]%>
 	<%usr_pic.each do |pic|%>
 		<%if pic["usr_id"]==row["usr_id"]%>
+				  <a href="/log_search_form_post?usr_id=<%=row["usr_id"]%>">
 				  <img src="/uploads/<%=pic["file_name"]%>" width="60px">
+				  </a>
 			  <%end%>
 	<%end%>
-	  <br>
+
 		  <%a=0%>
 		  <%pp_info.each do |pp|%>
 			  <%if a==0%>
 						<%if pp["pp_url"]==row["pp_url"]%>
 								  <%a=1%>
+								  <div class="smlbox">
+								  <div class="gs_ri">
 								  <%=pp["gs_rt"]%>
 								  <%=pp["gs_a"]%>
 								  <%=pp["gs_rs"]%>
-								  <!--<=pp["gs_fl"]%>-->
+								  <%=pp["gs_fl"]%>
+								  </div>
+								  </div>
 							  <%end%>
 						  <%end%>
 					  <%end%>
 		  <br>
 	  <%end%>
 	  </div>
+</div>
 </div>
 </body>
 </html>

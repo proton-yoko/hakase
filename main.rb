@@ -63,14 +63,18 @@ get '/log_search_form' do
 	erb :log_search_form
 end
 
-post '/log_search_form_post' do
+get '/log_search_form_post' do
 	search_key = params['usr_id']
+	pp_info = db.execute('SELECT * FROM pp_info')
+	usr_pic = db.execute('SELECT * FROM usr_pic')
 	#readlog = db.execute('SELECT * FROM readlog')
 	#p readlog[0][0].to_s 
-	result = db.execute('SELECT * FROM readlog WHERE usr_id="' + search_key + '"')
+	result = db.execute('SELECT * FROM readlog2 WHERE usr_id="' + search_key + '"')
 	locals = {
 		search_key: search_key,
-		result: result
+		result: result,
+		pp_info: pp_info,
+		usr_pic: usr_pic
 	}
 	erb :log_search_form_post, :locals => locals
 end
