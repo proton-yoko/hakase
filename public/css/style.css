@@ -30,6 +30,8 @@ body{
 	font: 16px arial,sans-serif;
 	line-height: 34px;
 	height: 34px !important;
+    inline-size: 400px;
+	border: solid 2px #ff0073;
 }
 
 
@@ -209,3 +211,43 @@ a:visited {
 .smlbox {
 	margin-left: 120px
 }
+.square_btn {
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: #ff0073;
+	border: solid 2px #ff0073;
+	border-radius: 3px;
+	transition: .4s;
+	margin-top: 2px;
+	width: 100px
+}
+
+.square_btn:hover {
+	background: #ff0073;
+	color: white
+}
+
+.submit_btn{
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: #ff0073;
+	border: solid 2px #ff0073;
+	border-radius: 3px;
+	transition: .4s;
+	margin-top: 2px;	
+}
+
+
+.submit_btn:hover {
+	background: #ff0073;
+	color: white
+}
+
+.search_box{
+	inline-size: 400px;
+	border: solid 2px #ff0073;
+}
+
+
